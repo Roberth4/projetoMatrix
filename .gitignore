@@ -1,0 +1,10 @@
+.env
+postgres/
+backups/
+synapse/media_store/
+synapse/*.signing.key
+synapse/*registration.yaml
+ooye/
+matterbridge/
+
+/synapse/homeserver.yaml
