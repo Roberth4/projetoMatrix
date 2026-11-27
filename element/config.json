@@ -6,5 +6,11 @@
     }
   },
   "brand": "Lab Matrix",
-  "default_theme": "dark"
+  "default_theme": "dark",
+  "features": {
+    "feature_group_calls": true
+  },
+  "element_call": {
+    "use_exclusively": true
+  }
 }

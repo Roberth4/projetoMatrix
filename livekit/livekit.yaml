@@ -4,7 +4,7 @@ rtc:
   port_range_start: 50100
   port_range_end: 50200
   use_external_ip: false
-  node_ip: 192.168.1.50      # troque pelo IP da SUA VM na LAN (é o que os navegadores usam)
+  node_ip: 172.25.221.31      # troque pelo IP da SUA VM na LAN (é o que os navegadores usam)
 room:
   auto_create: false          # quem cria sala é o lk-jwt-service
 logging:
