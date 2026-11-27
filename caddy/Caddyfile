@@ -17,3 +17,18 @@ matrix.lab.internal {
 element.lab.internal {
 	reverse_proxy element:80
 }
+
+ooye.lab.internal {
+	reverse_proxy ooye:6693
+}
+
+rtc.lab.internal {
+	handle /livekit/jwt* {
+		uri strip_prefix /livekit/jwt
+		reverse_proxy lk-jwt:8080
+	}
+	handle /livekit/sfu* {
+		uri strip_prefix /livekit/sfu
+		reverse_proxy livekit:7880
+	}
+}

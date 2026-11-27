@@ -1,0 +1,13 @@
+port: 7880
+rtc:
+  tcp_port: 7881
+  port_range_start: 50100
+  port_range_end: 50200
+  use_external_ip: false
+  node_ip: 192.168.1.50      # troque pelo IP da SUA VM na LAN (é o que os navegadores usam)
+room:
+  auto_create: false          # quem cria sala é o lk-jwt-service
+logging:
+  level: info
+keys:
+  labkey: d3669ea45839219e3a59ebccb8b8c3860429ec3b2b4c518d573aec886d3bd555

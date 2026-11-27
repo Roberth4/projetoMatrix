@@ -48,6 +48,36 @@ services:
           - rtc.lab.internal
           - ooye.lab.internal
 
+  ooye:
+    image: sim2kid/ooye-docker:latest
+    restart: unless-stopped
+    volumes:
+      - ./ooye:/data:Z
+    environment:
+      NODE_EXTRA_CA_CERTS: /data/lab-root-ca.crt   # Node passa a confiar na CA do Caddy
+
+  livekit:
+    image: livekit/livekit-server:latest
+    restart: unless-stopped
+    command: --config /etc/livekit.yaml
+    volumes:
+      - ./livekit/livekit.yaml:/etc/livekit.yaml:ro,Z
+    ports:
+      - "7881:7881/tcp"
+      - "50100-50200:50100-50200/udp"
+
+  lk-jwt:
+    image: ghcr.io/element-hq/lk-jwt-service:latest
+    restart: unless-stopped
+    environment:
+      LIVEKIT_URL: wss://rtc.lab.internal/livekit/sfu
+      LIVEKIT_KEY: ${LIVEKIT_KEY}
+      LIVEKIT_SECRET: ${LIVEKIT_SECRET}
+      LIVEKIT_FULL_ACCESS_HOMESERVERS: lab.internal
+      SSL_CERT_FILE: /certs/lab-root-ca.crt     # confia na CA do Caddy
+    volumes:
+      - ./caddy/lab-root-ca.crt:/certs/lab-root-ca.crt:ro,z   # z minúsculo: arquivo usado por 2 containers
+
 volumes:
   caddy_data:
   caddy_config:
