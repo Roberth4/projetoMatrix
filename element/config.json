@@ -6,11 +6,30 @@
     }
   },
   "brand": "Lab Matrix",
+  "branding": {
+    "welcome_background_url": "/custom/experimental.jpg",
+    "auth_footer_links": [],
+    "auth_header_logo_url": "/custom/logo.png"
+  },
   "default_theme": "dark",
   "features": {
     "feature_group_calls": true
   },
   "element_call": {
     "use_exclusively": true
+  },
+  "disable_custom_urls": true,
+  "disable_guests": true,
+  "disable_3pid_login": true,
+  "mobile_guide_toast": false,
+  "integrations_ui_url": null,
+  "integrations_rest_url": null,
+  "integrations_widgets_urls": null,
+  "room_directory": { "servers": ["lab.internal"] },
+  "setting_defaults": {
+    "UIFeature.registration": false,
+    "UIFeature.passwordReset": false,
+    "UIFeature.feedback": false,
+    "UIFeature.identityServer": false
   }
 }

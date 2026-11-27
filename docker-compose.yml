@@ -28,6 +28,9 @@ services:
     restart: unless-stopped
     volumes:
       - ./element/config.json:/app/config.json:ro,Z
+      - ./element/assets:/app/custom:ro,Z
+      - ./element/vector-icons:/app/vector-icons:ro,Z
+      - ./element/manifest.json:/app/manifest.json:ro,Z
 
   caddy:
     image: caddy:2
@@ -59,7 +62,7 @@ services:
   livekit:
     image: livekit/livekit-server:latest
     restart: unless-stopped
-    command: --config /etc/livekit.yaml
+    command: --config /etc/livekit.yaml --node-ip ${LAB_IP}
     volumes:
       - ./livekit/livekit.yaml:/etc/livekit.yaml:ro,Z
     ports:
